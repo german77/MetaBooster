@@ -5,13 +5,13 @@ public class Movie {
     private String name;
     private boolean available;
 
-    Movie(int id, String name) {
+    public Movie(int id, String name) {
         this.id = id;
         this.name = name;
         this.available = false;
     }
 
-    Movie(int id, String name, boolean available) {
+    public Movie(int id, String name, boolean available) {
         this.id = id;
         this.name = name;
         this.available = available;
@@ -35,5 +35,9 @@ public class Movie {
 
     public void setAvailability(boolean is_available) {
         this.available = is_available;
+    }
+
+    public String toString() {
+        return "id=" + id + ", \tnombre=" + name;
     }
 }

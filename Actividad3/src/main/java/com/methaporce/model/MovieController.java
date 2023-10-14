@@ -5,11 +5,15 @@ import java.util.ArrayList;
 public class MovieController {
     private ArrayList<Movie> movies = new ArrayList<Movie>();
 
-    public ArrayList<Movie> GetMovies() {
+    public int getMovieCount(){
+        return movies.size();
+    }
+
+    public ArrayList<Movie> getMovies() {
         return movies;
     }
 
-    public ArrayList<Movie> GetAvailableMovies() {
+    public ArrayList<Movie> getAvailableMovies() {
         ArrayList<Movie> available_movies = new ArrayList<Movie>();
 
         for (Movie movie : movies) {
@@ -21,7 +25,7 @@ public class MovieController {
         return available_movies;
     }
 
-    public ArrayList<Movie> GetUnavailableMovies() {
+    public ArrayList<Movie> getUnavailableMovies() {
         ArrayList<Movie> non_available_movies = new ArrayList<Movie>();
 
         for (Movie movie : movies) {
@@ -33,7 +37,7 @@ public class MovieController {
         return non_available_movies;
     }
 
-    public Movie GetMovieById(int id) {
+    public Movie getMovieById(int id) {
         for (Movie movie : movies) {
             if (id != movie.getId()) {
                 continue;
@@ -45,8 +49,8 @@ public class MovieController {
         return null;
     }
 
-    public boolean MarkMovieAsAvailable(int id) {
-        Movie movie = GetMovieById(id);
+    public boolean markMovieAsAvailable(int id) {
+        Movie movie = getMovieById(id);
 
         if (movie == null) {
             // Id doesn't exist
@@ -57,8 +61,8 @@ public class MovieController {
         return true;
     }
 
-    public boolean AddMovie(Movie new_movie) {
-        if (GetMovieById(new_movie.getId()) != null) {
+    public boolean addMovie(Movie new_movie) {
+        if (getMovieById(new_movie.getId()) != null) {
             // Movie already exist
             return false;
         }
@@ -67,7 +71,7 @@ public class MovieController {
     }
 
     public boolean deleteMovie(int id) {
-        Movie movie = GetMovieById(id);
+        Movie movie = getMovieById(id);
 
         if (movie == null) {
             // Id doesn't exist
